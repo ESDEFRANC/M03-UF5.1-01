@@ -11,13 +11,13 @@ import java.util.Date;
  *
  * @author usuario
  */
-public class Empleado {
+public class Empleado implements Comparable<Empleado>{
     private String dni;
     private String nombre;
     private String apellido;
     private Date fecha;
 
-    public Empleado(String dni, String nombre, String apellido, Date fecha) {
+    public Empleado(String nombre, String apellido,String dni, Date fecha) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -60,7 +60,21 @@ public class Empleado {
     public String toString() {
         return "Empleado{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", fecha=" + fecha + '}';
     }
+
+    @Override
+    public int compareTo(Empleado t) {
+       if(t.fecha.after(fecha)){
+            return 1;
+        }else if(t.fecha.before(fecha)){
+            return -1;
+        }else{
+        return 0;
+        }
+    }
+
+  
+    }
     
     
     
-}
+
